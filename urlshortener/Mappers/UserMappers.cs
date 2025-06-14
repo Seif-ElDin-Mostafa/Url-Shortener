@@ -9,13 +9,21 @@ namespace urlshortener.Mappers;
 
 public static class UserMappers
 {
-    public static User ToCreateUser(this CreateUserDto createUserDto)
+    public static User ToLoginUser(this LoginUserDto loginUserDto)
     {
         return new User
         {
-            Username = createUserDto.Username,
-            Email = createUserDto.Email,
-            Password = createUserDto.Password,
+            Username = loginUserDto.Username,
+            Password = loginUserDto.Password,
+        };
+    }
+    public static User ToCreateUser(this RegisterUserDto registerUserDto)
+    {
+        return new User
+        {
+            Username = registerUserDto.Username,
+            Email = registerUserDto.Email,
+            Password = registerUserDto.Password,
         };
     }
 

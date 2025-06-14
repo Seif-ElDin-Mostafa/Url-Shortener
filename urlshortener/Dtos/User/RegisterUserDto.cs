@@ -6,7 +6,7 @@ using urlshortener.Dtos.Url;
 
 namespace urlshortener.Dtos.User;
 
-public class CreateUserDto
+public class RegisterUserDto
 {
     public string Username { get; set; } = null!;
     public string Email { get; set; } = null!;

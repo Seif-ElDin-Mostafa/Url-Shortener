@@ -22,27 +22,27 @@ public class UrlRepository : IUrlRepository
     }
     public async Task<List<UrlResponseDto>> GetAllAsync()
     {
-        return await _context.Urls.AsNoTracking().Select(s => s.ToUrlResponseDto()).ToListAsync();
+        return await _context.Urls.AsNoTracking().Select(u => u.ToUrlResponseDto()).ToListAsync();
     }
     public async Task<Url?> GetByIdAsync(int Id)
     {
-        return await _context.Urls.FirstOrDefaultAsync(s => s.Id == Id);
+        return await _context.Urls.FirstOrDefaultAsync(u => u.Id == Id);
     }
     public async Task<List<UrlResponseDto>> GetByUserIdAsync(int userId)
     {
         return await _context.Urls
             .AsNoTracking()
-            .Where(s => s.UserId == userId)
-            .Select(s => s.ToUrlResponseDto())
+            .Where(u => u.UserId == userId)
+            .Select(u => u.ToUrlResponseDto())
             .ToListAsync();
     }
     public async Task<Url?> GetByShortenedUrlAsync(string shortenedUrl)
     {
-        return await _context.Urls.AsNoTracking().FirstOrDefaultAsync(s => s.ShortenedUrl == shortenedUrl);
+        return await _context.Urls.AsNoTracking().FirstOrDefaultAsync(u => u.ShortenedUrl == shortenedUrl);
     }
     public async Task<Url?> GetByOriginalUrlAsync(string originalUrl)
     {
-        return await _context.Urls.AsNoTracking().FirstOrDefaultAsync(s => s.OriginalUrl == originalUrl);
+        return await _context.Urls.AsNoTracking().FirstOrDefaultAsync(u => u.OriginalUrl == originalUrl);
     }
     public async Task AddAsync(Url url)
     {
