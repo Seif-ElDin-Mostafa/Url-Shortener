@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using urlshortener.Data;
 using urlshortener.Dtos.User;
+using urlshortener.Interfaces;
 using urlshortener.Mappers;
 using urlshortener.Models;
 using urlshortener.Repositories;
@@ -21,9 +22,9 @@ namespace urlshortener.Controllers;
 [ApiController]
 public class UserController : ControllerBase
 {
-    private readonly UserRepository _userRepository;
+    private readonly IUserRepository _userRepository;
     private readonly IConfiguration _configuration;
-    public UserController(UserRepository userRepository, IConfiguration configuration)
+    public UserController(IUserRepository userRepository, IConfiguration configuration)
     {
         _userRepository = userRepository;
         _configuration = configuration;
